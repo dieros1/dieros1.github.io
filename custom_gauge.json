@@ -12,21 +12,21 @@
 	{
 		“kind”: “main”,
 		“tag”: “Custom gauge”,
-		“url”: “box.js url”,
+		“url”: “https://dieros1.github.io/gauge.js”,
 		“integrity”: “”,
 		“ignoreIntegrity”: true
 	},
 	{
 		“kind”: “styling”,
 		“tag”: “Custom gauge styling”,
-		“url”: “box_sps.js url”,
+		“url”: “https://dieros1.github.io/gauge_sps.js”,
 		“integrity”: “”,
 		“ignoreIntegrity”: true
 	},
 	{
 		“kind”: “builder”,
 		“tag”: “Custom gauge builder”,
-		“url”: “box_bps.js url”,
+		“url”: “https://dieros1.github.io/gauge_bps.js”,
 		“integrity”: “”,
 		“ignoreIntegrity”: true
 	}
