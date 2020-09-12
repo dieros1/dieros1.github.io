@@ -1,59 +1,52 @@
 (function() { 
 	let template = document.createElement("template");
 	template.innerHTML = `
-		<style>
-		:host {
-			border-radius: 10px;
-			border-width: 2px;
-			border-color: black;
-			border-style: solid;
-			display: block;
-		} 
-
-		body {
-		  background: #fff;
-		}
+		<html>
+			<head>
+			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+			<script type="text/javascript">
+				google.charts.load('current', {'packages':['gauge']});
+				google.charts.setOnLoadCallback(drawChart);
 		
-		.metric {
-		  padding: 10%;
-		}
+				function drawChart() {
 		
-		.metric svg {
-		  max-width: 100%;
-		}
+				var data = google.visualization.arrayToDataTable([
+					['Label', 'Value'],
+					['Memory', 80],
+					['CPU', 55],
+					['Network', 68]
+				]);
 		
-		.metric path {
-		  stroke-width: 75;
-		  stroke: #ecf0f1;
-		  fill: none;
-		}
+				var options = {
+					width: 400, height: 120,
+					redFrom: 90, redTo: 100,
+					yellowFrom:75, yellowTo: 90,
+					minorTicks: 5
+				};
 		
-		.metric text {
-		  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-		}
+				var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
 		
-		.metric.participation path.data-arc {
-		  stroke: #27ae60;
-		}
+				chart.draw(data, options);
 		
-		.metric.participation text {
-		  fill: #27ae60;
-		}		
-		</style>
-		
-		<div class="container">
-		  <div class="row">
-		    <div class="col-md-4 col-sm-4">
-		      <div class="metric participation" data-ratio=".95">
-		        <svg viewBox="0 0 1000 500">
-			        <path d="M 950 500 A 450 450 0 0 0 50 500"></path>
-					<text class='percentage' text-anchor="middle" alignment-baseline="middle" x="500" y="300" font-size="140" font-weight="bold">0%</text>
-					<text class='title' text-anchor="middle" alignment-baseline="middle" x="500" y="450" font-size="90" font-weight="normal"></text>
-  	            </svg>
-		      </div>
-		    </div>
-		  </div>
-		</div>
+				setInterval(function() {
+					data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+					chart.draw(data, options);
+				}, 13000);
+				setInterval(function() {
+					data.setValue(1, 1, 40 + Math.round(60 * Math.random()));
+					chart.draw(data, options);
+				}, 5000);
+				setInterval(function() {
+					data.setValue(2, 1, 60 + Math.round(20 * Math.random()));
+					chart.draw(data, options);
+				}, 26000);
+				}
+			</script>
+			</head>
+			<body>
+			<div id="chart_div" style="width: 400px; height: 120px;"></div>
+			</body>
+		</html>
 	`;
 
 	class Box extends HTMLElement {

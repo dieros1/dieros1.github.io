@@ -1,8 +1,8 @@
 
 {
-    "id": "CustomGauge",
+    "id": "GoogleGauge",
     "version": "1.0.0",
-    "name": "Custom Gauge",
+    "name": "Google Gauge",
     "description": "VantagePoint custom gauge",
     "newInstancePrefix": "Gauge",
     "icon": "url",
