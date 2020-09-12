@@ -1,0 +1,94 @@
+“id”: “CustomGauge”,
+“version”: “1.0”,
+“name”: “Custom Gauge”,
+“description”: “VantagePoint custom gauge”,
+“newInstancePrefix”: “Gauge”,
+“icon”: “url”,
+“vendor”: “VantagePoint Solutions”,
+“eula”: “EULA”,
+“license”: “1.0”,
+
+“webcomponents”: [
+	{
+		“kind”: “main”,
+		“tag”: “Custom gauge”,
+		“url”: “box.js url”,
+		“integrity”: “”,
+		“ignoreIntegrity”: true
+	},
+	{
+		“kind”: “styling”,
+		“tag”: “Custom gauge styling”,
+		“url”: “box_sps.js url”,
+		“integrity”: “”,
+		“ignoreIntegrity”: true
+	},
+	{
+		“kind”: “builder”,
+		“tag”: “Custom gauge builder”,
+		“url”: “box_bps.js url”,
+		“integrity”: “”,
+		“ignoreIntegrity”: true
+	}
+],
+
+“properties”: {
+    "value": {
+        "type": "number",
+        "description": "Gauge value",
+        "default": "0"
+    },
+    "info": {
+        "type": "string",
+        "description": "Gauge info",
+        "default": ""
+    },
+    "color": {
+        "type": "string",
+        "description": "Text Color info",
+        "default": "#3498db"
+    },
+    "width": {
+        "type": "integer",
+        "default": 100
+    },
+    "height": {
+        "type": "integer",
+        "default": 100
+    }
+},
+
+"methods": {
+    "setValue": {
+        "description": "Sets the Gauge value.",
+        "parameters": [
+            {
+                "name": "newValue",
+                "type": "number",
+                "description": "Gauge Value"
+            },
+            {
+                "name": "newInfo",
+                "type": "string",
+                "description": "Gauge Info"  
+            },
+            {
+                "name": "newColor",
+                "type": "string",
+                "description": "Text Color info"
+            }
+        ],
+        "body": "this.value = newValue; this.info = newInfo; this.color = newColor;"
+    },
+    "getValue": {
+        "returnType": "number",
+        "description": "Returns the Gauge value",
+        "body": "return this.value;"
+    }
+},
+
+"events": {
+    "onClick": {
+        "description": "Called when the user clicks the Box."
+    }
+},
