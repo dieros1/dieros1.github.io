@@ -119,5 +119,5 @@
 			this.render(this.$value, this.$info, this.$color);
 		}
 	}	
-	customElements.define("Custom Gauge", Box);
+	customElements.define("custom-gauge", Box);
 })();
