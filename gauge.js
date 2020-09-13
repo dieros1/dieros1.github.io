@@ -1,52 +1,51 @@
 (function() { 
 	let template = document.createElement("template");
 	template.innerHTML = `
-		<html>
-			<head>
-			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-			<script type="text/javascript">
-				google.charts.load('current', {'packages':['gauge']});
-				google.charts.setOnLoadCallback(drawChart);
-		
-				function drawChart() {
-		
-				var data = google.visualization.arrayToDataTable([
-					['Label', 'Value'],
-					['Memory', 80],
-					['CPU', 55],
-					['Network', 68]
-				]);
-		
-				var options = {
-					width: 400, height: 120,
-					redFrom: 90, redTo: 100,
-					yellowFrom:75, yellowTo: 90,
-					minorTicks: 5
-				};
-		
-				var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
-		
-				chart.draw(data, options);
-		
-				setInterval(function() {
-					data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
-					chart.draw(data, options);
-				}, 13000);
-				setInterval(function() {
-					data.setValue(1, 1, 40 + Math.round(60 * Math.random()));
-					chart.draw(data, options);
-				}, 5000);
-				setInterval(function() {
-					data.setValue(2, 1, 60 + Math.round(20 * Math.random()));
-					chart.draw(data, options);
-				}, 26000);
-				}
-			</script>
-			</head>
-			<body>
-			<div id="chart_div" style="width: 400px; height: 120px;"></div>
-			</body>
-		</html>
+		<head>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+	<script type="text/javascript">
+	  google.charts.load('current', {'packages':['gauge']});
+	  google.charts.setOnLoadCallback(drawChart);
+
+	  function drawChart() {
+	  
+		var test = 500
+
+		var data = google.visualization.arrayToDataTable([
+		  ['Label', 'Value'],
+		  ['Memory', test],
+		  ['CPU', 55],
+		  ['Network', 68]
+		]);
+
+		var options = {
+		  width: 400, height: 120,
+		  redFrom: 75, redTo: 100,
+		  yellowFrom:50, yellowTo: 75,
+		  minorTicks: 10
+		};
+
+		var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+		chart.draw(data, options);
+
+		setInterval(function() {
+		  data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+		  chart.draw(data, options);
+		}, 10000);
+		setInterval(function() {
+		  data.setValue(1, 1, 40 + Math.round(60 * Math.random()) );
+		  chart.draw(data, options);
+		}, 100);
+		setInterval(function() {
+		  data.setValue(2, 1, 10 );
+		  chart.draw(data, options);
+		}, 100);
+	  }
+	</script>
+
+	<div id="chart_div" style="width: 400px; height: 120px;"></div>
 	`;
 
 	class Box extends HTMLElement {
@@ -66,7 +65,7 @@
 			this._props = {};
 		}
 		
-		render(val, info, color) {
+		/* render(val, info, color) {
 			var val1 = val * 0.01;
 			var x = this.svg_circle_arc_path(500, 500, 450, -90, val1 * 180.0 - 90);
 			var rounded = Math.round( val * 10 ) / 10;
@@ -76,8 +75,10 @@
 				this.$style.innerHTML = ':host {border-radius: 10px;border-width: 2px;border-color: black;border-style: solid;display: block;}.body {background: #fff;}.metric {padding: 10%;}.metric svg {max-width: 100%;}.metric path {stroke-width: 75;stroke: #ecf0f1;fill: none;}.metric text {font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;}.metric.participation path.data-arc {stroke: ' + color + ';}.metric.participation text {fill: ' + color + ';}';
 				this.$svg.innerHTML = '<path d="M 950 500 A 450 450 0 0 0 50 500"></path><text class="percentage" text-anchor="middle" alignment-baseline="middle" x="500" y="300" font-size="140" font-weight="bold">' + rounded + '%</text><text class="title" text-anchor="middle" alignment-baseline="middle" x="500" y="450" font-size="90" font-weight="normal">' + info + '</text><path d="' + x + '" class="data-arc"></path>"';
 			}
-		}
+		} */
 		  
+		
+
 		polar_to_cartesian(cx, cy, radius, angle) {
 		    var radians;
 		    radians = (angle - 90) * Math.PI / 180.0;
